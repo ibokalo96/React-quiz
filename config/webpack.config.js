@@ -108,6 +108,8 @@ module.exports = function (webpackEnv) {
       {
         loader: require.resolve('css-loader'),
         options: cssOptions,
+        // modules: true,
+        // localIdentName: '[name]__[local]--[hash:base64:5]'
       },
       {
         // Options for PostCSS as we reference these options twice
@@ -472,6 +474,9 @@ module.exports = function (webpackEnv) {
                 sourceMap: isEnvProduction
                   ? shouldUseSourceMap
                   : isEnvDevelopment,
+                  modules: {
+                    localIdentName: '[name]__[local]___[hash:base64:5]'
+                }
               }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
